@@ -23,6 +23,9 @@
 	<%
 		List<ContaBancaria> lista = (List<ContaBancaria>) request.getAttribute("contasBancarias");
 	%>
+	
+	<c:import url="cabecalho.jsp"/>
+	
 	<div class="container">
 		<h2>Cadastramento de Contas</h2>
 
@@ -47,29 +50,29 @@
 			</thead>
 			<tbody>
 
-				<%-- 				<c:forEach var="item" items="${lista}"> --%>
+				<!-- <%-- 				<c:forEach var="item" items="${lista}"> --%> -->
 
 				<!-- 					<tr> -->
-				<%-- 						<td>${item.id}</td> --%>
+				<!-- <%-- 						<td>${item.id}</td> --%>
 				<%-- 						<td>${item.agencia}</td> --%>
 				<%-- 						<td>${item.numConta}</td> --%>
 				<%-- 						<td>${item.saldo}</td> --%>
-				<%-- 				</c:forEach> --%>
+				<%-- 				</c:forEach> --%> -->
 
-				<%-- 				<c:choose> --%>
-				<%-- 					<c:when test="item instanceof ContaCorrente"> --%>
+				<!-- <%-- 				<c:choose> --%>
+				<%-- 					<c:when test="item instanceof ContaCorrente"> --%> -->
 				<!-- 					item = "Conta-Corrente" -->
-				<%-- 					</c:when> --%>
+				<!-- <%-- 					</c:when> --%> -->
 
-				<%-- 					<c:when test="item instanceof ContaPoupanca"> --%>
+				<!-- <%-- 					<c:when test="item instanceof ContaPoupanca"> --%> -->
 				<!-- 					item = "Conta-Poupança" -->
-				<%-- 					</c:when> --%>
+				<!-- <%-- 					</c:when> --%> -->
 
 
-				<%-- 					<c:when test="item instanceof Investimento"> --%>
+				<!-- <%-- 					<c:when test="item instanceof Investimento"> --%> -->
 				<!-- 					item = "Investimento" -->
-				<%-- 					</c:when> --%>
-				<%-- 				</c:choose> --%>
+				<!-- <%-- 					</c:when> --%> -->
+				<!-- <%-- 				</c:choose> --%> -->
 
 				<!-- 				</tr> -->
 
@@ -83,10 +86,10 @@
 					<td><%=item.getSaldo()%></td>
 					<td><%=item.obterTipo()%></td>
 
-<!-- 					<form action="ContaBancariaController" method="get"> -->
-<%-- 						<input type="hidden" name="id" value="${item.id}"> --%>
-<!-- 						<td><button type="submit" class="btn btn-default">Excluir</button></td> -->
-<!-- 					</form> -->
+					<!-- <form action="ContaBancariaController" method="get">
+ 						<input type="hidden" name="id" value="${item.id}"> 
+						<td><button type="submit" class="btn btn-default">Excluir</button></td>
+					</form> -->
 
 				</tr>
 

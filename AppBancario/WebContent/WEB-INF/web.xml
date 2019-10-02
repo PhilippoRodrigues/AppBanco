@@ -84,4 +84,44 @@
     <servlet-name>TitularDao</servlet-name>
     <url-pattern>/TitularDao</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DocumentacaoTitularController</display-name>
+    <servlet-name>DocumentacaoTitularController</servlet-name>
+    <servlet-class>controle.DocumentacaoTitularController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DocumentacaoTitularController</servlet-name>
+    <url-pattern>/DocumentacaoTitularController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ContaBancariaTitularController</display-name>
+    <servlet-name>ContaBancariaTitularController</servlet-name>
+    <servlet-class>controle.ContaBancariaTitularController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ContaBancariaTitularController</servlet-name>
+    <url-pattern>/ContaBancariaTitularController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcluirTitularController</display-name>
+    <servlet-name>ExcluirTitularController</servlet-name>
+    <servlet-class>controle.ExcluirTitularController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluirTitularController</servlet-name>
+    <url-pattern>/ExcluirTitularController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaTitularController</display-name>
+    <servlet-name>ConsultaTitularController</servlet-name>
+    <servlet-class>controle.ConsultaTitularController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaTitularController</servlet-name>
+    <url-pattern>/ConsultaTitularController</url-pattern>
+  </servlet-mapping>
 </web-app>

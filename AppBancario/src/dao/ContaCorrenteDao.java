@@ -7,69 +7,146 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conexao.Conexao;
+import modelo.ContaBancaria;
 import negocio.ContaCorrente;
 
 public class ContaCorrenteDao {
 
-	public static ContaCorrente incluir(ContaCorrente cc) {
+	private static String sql = "SELECT * FROM TCONTACORRENTE CC INNER JOIN TCONTABANCARIA CB ON CB.ID = CC.IDCONTABANCARIA ";
+	private static String sqlNome = "SELECT * FROM  TCONTABANCARIA CB INNER JOIN TCONTACORRENTE CC ON CB.ID = CC.IDCONTABANCARIA LEFT JOIN TTITULARCB T ON CB.ID = T.IDCONTABANCARIA ";
+
+	public static ContaCorrente obterPorId(int id) {
+
 		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql + "WHERE CB.ID = ?");
+			ps.setInt(1, id);
 
-			ContaBancariaDao.incluir(cc);
+			ResultSet rs = ps.executeQuery();
 
-			PreparedStatement ps = Conexao.obterConexao()
-					.prepareStatement("INSERT into TContaCorrente (idContaBancaria, contraCheque, "
-							+ "chequeEspecial, financiamento) VALUES (?,?,?,?)");
-
-			ps.setInt(1, cc.getId());
-			ps.setFloat(2, cc.getContraCheque());
-			ps.setBoolean(3, "Sim".equals(cc.getChequeEspecial())); //coloco getChequeEspecial() no construtor da classe Contacorrente?
-			ps.setBoolean(4, "Sim".equals(cc.getFinanciamento()));
-			
-
-			ps.execute();
-
-			return cc;
+			if (rs.next()) {
+				return new ContaCorrente(
+						rs.getInt("idContaBancaria"), 
+						rs.getString("agencia"),
+						rs.getString("numConta"),
+						rs.getFloat("saldo"),
+						rs.getFloat("contraCheque"),
+						rs.getBoolean("chequeEspecial"),
+						rs.getFloat("valorChequeEspecial"),
+						rs.getBoolean("financiamento"),
+						rs.getFloat("valorFinanciamento"));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return null;
 	}
-	
-	private static String sql = "SELECT * FROM TCONTACORRENTE CC INNER JOIN TCONTABANCARIA CB ON CB.ID = CC.IDCONTABANCARIA ";
-	
-	public static List<ContaCorrente> obterLista() {
+
+	public static boolean incluir(ContaCorrente cc) {
+		try {
+
+			ContaBancaria cb = ContaBancariaDao.incluir(cc);
+
+			PreparedStatement ps = Conexao.obterConexao()
+					.prepareStatement("INSERT into TContaCorrente ("
+							+ "idContaBancaria, "
+							+ "contraCheque, "
+							+ "chequeEspecial, "
+							+ "valorChequeEspecial, "
+							+ "financiamento, "
+							+ "valorFinanciamento) "
+							+ "values (?,?,?,?,?,?)");
+
+			ps.setInt(1, cb.getId());
+			ps.setFloat(2, cc.getContraCheque());
+			ps.setBoolean(3,cc.getChequeEspecial()); 
+			ps.setFloat(4, cc.getValorChequeEspecial());
+			ps.setBoolean(5,cc.getFinanciamento());
+			ps.setFloat(6, cc.getValorFinanciamento());
+
+			ps.execute();
+
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	public static List<ContaCorrente> obterLista(String nome) {
+
 		List<ContaCorrente> lista = new ArrayList<ContaCorrente>();
-		
-//		String sql = "SELECT cc.idContaBancaria, cc.contraCheque, cc.chequeEspecial, cc.financiamento, cb.agencia, cb.numConta, cb.saldo " 
-//				+ "FROM "
-//				+ " dbinfnet.tcontacorrente cc Inner join dbinfnet.tcontabancaria cb on " 
-//				+ " cc.idContaBancaria = cb.id "
-//				+ "ORDER BY "
-//				+ " cb.agencia;";
 
 		try {
-			PreparedStatement ps = Conexao.obterConexao().prepareStatement((sql + "ORDER BY CB.ID"));
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sqlNome);
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) { 		// WHILE: quando quer pegar uma lista
+										// IF: quando quer pegar um objeto somente
+				lista.add(new ContaCorrente(
+						rs.getInt("idContaBancaria"), 
+						rs.getString("agencia"),
+						rs.getString("numConta"), 
+						rs.getFloat("saldo"), 
+						rs.getFloat("contraCheque"),
+						rs.getBoolean("chequeEspecial"),
+						rs.getFloat("valorChequeEspecial"),
+						rs.getBoolean("financiamento"),
+						rs.getFloat("valorFinanciamento")
+
+				));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
+	
+	public static List<ContaCorrente> obterLista(){
+		List<ContaCorrente> lista = new ArrayList<ContaCorrente>();
+
+		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql + "ORDER BY CB.AGENCIA");
 			ResultSet rs = ps.executeQuery();
 			
-			while(rs.next()){ 	//Quando quer pegar uma lista, usar WHILE, quando quer pegar um objeto somente, usar IF
+			while(rs.next()){
 				lista.add(
 						new ContaCorrente(
-								rs.getInt("idContaBancaria"),
+								rs.getInt("idContaBancaria"), 
 								rs.getString("agencia"),
-								rs.getString("numConta"),
-								rs.getFloat("saldo"),
+								rs.getString("numConta"), 
+								rs.getFloat("saldo"), 
 								rs.getFloat("contraCheque"),
 								rs.getBoolean("chequeEspecial"),
-								rs.getBoolean("financiamento")
-								
-							)
+								rs.getFloat("valorChequeEspecial"),
+								rs.getBoolean("financiamento"),
+								rs.getFloat("valorFinanciamento"))
 					);
-			}
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return lista;
+	}
+
+	public static boolean excluir(int id) {
+		try {
+			PreparedStatement ps = Conexao.obterConexao()
+					.prepareStatement("DELETE FROM TContaCorrente WHERE idContaBancaria = ?");
+
+			ps.setInt(1, id);
+
+			ps.execute();
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 }

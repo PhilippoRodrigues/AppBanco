@@ -77,11 +77,11 @@ public class Documentacao {
 		this.telefone = telefone;
 	}
 
-//	public void exibir() {
-//		System.out.printf("Documentação: ");
-//		System.out.println();
-//		System.out.println(this);
-//	}
+	public void exibir() {
+		System.out.printf("Documentação: ");
+		System.out.println();
+		System.out.println(this);
+	}
 	
 	@Override
 	public String toString() {

@@ -10,8 +10,33 @@ import conexao.Conexao;
 import negocio.Documentacao;
 
 public class DocumentacaoDao {
+	
+	public static Documentacao obterPorId(int id){
+		String sql = "SELECT * FROM TDocumentacao where id = ?";
+		
+		try {
+			PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			 
+			if(rs.next()){
+				return new Documentacao(
+						rs.getInt("id"), 
+						rs.getString("rg"), 
+						rs.getString("cpf"), 
+						rs.getString("endereco"), 
+						rs.getString("cep"),
+						rs.getString("telefone")
+					);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-	public static Documentacao incluir(Documentacao doc) {
+	public static boolean incluir(Documentacao doc) {
+		
 		try {
 
 			PreparedStatement ps = Conexao.obterConexao()
@@ -26,19 +51,21 @@ public class DocumentacaoDao {
 
 			ps.execute();
 
-			return doc;
+			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return null;
+		return false;
 	}
 
 	public static List<Documentacao> obterLista() {
-		
-		String sql = "SELECT * FROM TDocumentacao ORDER BY id";
 
 		List<Documentacao> lista = new ArrayList<Documentacao>();
+		
+		String sql = "SELECT * FROM TDocumentacao ORDER BY cpf";
+
 		
 
 		try {
@@ -62,5 +89,24 @@ public class DocumentacaoDao {
 		}
 		
 		return lista;
+	}
+	
+	public static boolean excluir(int id){
+		try {
+			PreparedStatement ps = 
+					Conexao.obterConexao().prepareStatement(
+							"DELETE FROM TDocumentacao WHERE id = ?"
+						);
+
+			ps.setInt(1, id);
+			
+			ps.execute();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		return false;
 	}
 }

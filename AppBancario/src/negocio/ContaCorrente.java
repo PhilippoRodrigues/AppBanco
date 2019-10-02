@@ -4,12 +4,8 @@ import modelo.ContaBancaria;
 
 public class ContaCorrente extends ContaBancaria {
 
-	private float realizarDocTed, receberDocTed, taxaDocTed, contraCheque;
+	private float contraCheque;
 	private boolean chequeEspecial, financiamento;
-
-	// protected Titular titular;
-
-	// private valorChequeEspecial, valorFinanciamento;
 
 	// Construtor
 
@@ -27,21 +23,25 @@ public class ContaCorrente extends ContaBancaria {
 		super(agencia, numConta, saldo);
 		this.setContraCheque(contraCheque);
 		this.getChequeEspecial();
+		this.getValorChequeEspecial();
 		this.getFinanciamento();
+		this.getValorFinanciamento();
 	}
 
 	public ContaCorrente(int id, String agencia, String numConta, float saldo, float contraCheque, boolean chequeEspecial,
-			boolean financiamento) { 
+			float valorChequeEspecial, boolean financiamento, float valorFinanciamento) { 
 		super(id, agencia, numConta, saldo);
 		this.setContraCheque(contraCheque);
 		this.getChequeEspecial();
+		this.getValorChequeEspecial();
 		this.getFinanciamento();
+		this.getValorFinanciamento();
 	}
 
 	
 
 	// Métodos
-
+	
 	public float getContraCheque() {
 		return contraCheque;
 	}
@@ -50,78 +50,11 @@ public class ContaCorrente extends ContaBancaria {
 		this.contraCheque = contraCheque;
 	}
 
-	// DocTed
-
-	public float getRealizarDocTed() {
-		return this.realizarDocTed;
-	}
-
-	public void setRealizarDocTed(float realizarDocTed) {
-		this.realizarDocTed = realizarDocTed;
-	}
-
-	public float getTaxaDocTed() {
-		return this.taxaDocTed();
-	}
-
-	public float taxaDocTed() {
-		if (this.getRealizarDocTed() > 0.0f) {
-			this.taxaDocTed = 10.0f;
-		} else {
-			this.taxaDocTed = 0.0f;
-		}
-		return this.taxaDocTed;
-	}
-
-	public void setTaxaDocTed(float taxaDocTed) {
-		this.taxaDocTed = taxaDocTed;
-	}
-
-	public void setReceberDocTed(float receberDocTed) {
-		this.receberDocTed = receberDocTed;
-	}
-
-	public float getReceberDocTed() {
-		return this.receberDocTed;
-	}
-
-	// Extrato
-
-	@Override
-	public String extrato() {
-		String extrato = "Extrato bancário do mês atual:";
-		extrato = "Valor Doc/Ted realizado: R$ %.2f%n" + this.getRealizarDocTed();
-		extrato = "Valor da taxa do Doc/Ted: R$ %.2f%n" + this.getTaxaDocTed();
-		extrato = "Valor do Doc/Ted recebido: R$ %.2f%n" + this.getReceberDocTed();
-		extrato = "Saldo atual: R$ %.2f%n" + this.saldoFinal();
-		extrato = "Cheque especial: " + this.getChequeEspecial();
-		extrato = "Financiamento: " + this.getFinanciamento();
-
-		return extrato;
-
-		// System.out.printf();
-		// System.out.printf("Valor do cheque especial: R$ %.2f%n",
-		// this.getValorChequeEspecial());
-		// System.out.println(");
-		// System.out.printf("Valor dos Resgates realizados: R$ %.2f%n",
-		// this.getValorFinanciamento());
-	}
-
-	// SaldoCC
-
-	@Override
-	public float saldoFinal() {
-		return super.getSaldo() - // Preciso alocar o resultado em uma variável para o método funcionar?
-				getRealizarTransferencia() - getPagamento() + getReceberTransferencia() + getDeposito();
-	}
-
 	// ChequeEspecial
 
-	// Precisa reformular
-
-	// public float getValorChequeEspecial() {
-//			return this.getContraCheque() * 0.4f;
-//		}
+	 public float getValorChequeEspecial() {
+			return this.getChequeEspecial() ? this.getContraCheque() * 0.4f : 0.00f;
+		}
 
 	public boolean getChequeEspecial() {
 		return this.getContraCheque() >= 15000.00f;
@@ -129,38 +62,31 @@ public class ContaCorrente extends ContaBancaria {
 
 	// Financiamento
 
-	// Precisa reformular
-
-//	public float getValorFinanciamento() {
-//		return super.getContraCheque() * 0.5f;
-//	}
+	public float getValorFinanciamento() {
+		return this.getFinanciamento() ? this.getContraCheque() * 0.5f : 0.00f;
+	}
 
 	public boolean getFinanciamento() {
 		return this.getContraCheque() >= 20000.00f;
 	}
 
-//	public Titular getTitular() {
-//		return titular;
-//	}
-//	
-//	public void setTitular(Titular titular) {
-//		this.titular = titular;
-//	}
-
-//	public void exibir() {
-//		System.out.println();
-//		System.out.printf("Conta Corrente - ");
-//		super.exibir();
-//		System.out.println();
-//		System.out.println(this);
-//	}
+	public void exibir() {
+		System.out.println();
+		System.out.printf("Conta Corrente - ");
+		super.exibir();
+		System.out.println();
+		System.out.println(this);
+	}
 
 	@Override
 	public String toString() {
-		return String.format("%s - %.2f - %s - %s", 
+		return String.format("%s - Contra-Cheque: %.2f - Cheque Especial: %s - "
+				+ "Valor do Cheque Especial: %.2f - Financiamento: %s - Valor do financiamento: %.2f", 
 				super.toString(), 
-				this.contraCheque,
-				this.getChequeEspecial() ? "Sim" : "Não", 
-				this.getFinanciamento() ? "Sim" : "Não");
+				this.getContraCheque(),
+				this.getChequeEspecial() ? "Sim" : "Não",
+				this.getValorChequeEspecial(),
+				this.getFinanciamento() ? "Sim" : "Não",
+				this.getValorFinanciamento());
 	}
 }

@@ -1,7 +1,7 @@
 package negocio;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import auxiliar.Constante;
 import modelo.ContaBancaria;
@@ -10,14 +10,19 @@ public class Titular {
 	
 	private int id;
 	private String nomeBanco,dataAberturaConta, nome;
-//	public Documentacao documentacao;
-	public List <ContaBancaria> tiposConta;
+	public Documentacao documentacao;
+	public Set <ContaBancaria> tiposConta;
 	private int[] quantidadeContasBancarias;
 	
 	
 	//Construtor
 	
+	public Titular() {
+		tiposConta = new HashSet<ContaBancaria>();
+	}
+	
 	public Titular(int id) {
+		this();
 		this.setId(id);
 	}
 	
@@ -27,19 +32,39 @@ public class Titular {
 		this.setDataAberturaConta(dataAberturaConta);
 	}
 	
-	public Titular(int id, String nome, String nomeBanco, String dataAberturaConta) { 
+	public Titular(String nome, String nomeBanco, String dataAberturaConta, Documentacao documentacao) { 
+		this.setNome(nome);
+		this.setNomeBanco(nomeBanco);
+		this.setDataAberturaConta(dataAberturaConta);
+		this.setDocumentacao(documentacao);
+	}
+	
+	public Titular(int id, String nome, String nomeBanco, String dataAberturaConta, Documentacao documentacao) { 
 		this.setId(id);
 		this.setNome(nome);
 		this.setNomeBanco(nomeBanco);
 		this.setDataAberturaConta(dataAberturaConta);
+		this.setDocumentacao(documentacao);
 	}
 
-	public Titular() {
-		tiposConta = new ArrayList<ContaBancaria>();
+	public Titular(int id, String nome, String nomeBanco, String dataAberturaConta, Documentacao documentacao, Set<ContaBancaria> tiposConta) { 
+		this.setId(id);
+		this.setNome(nome);
+		this.setNomeBanco(nomeBanco);
+		this.setDataAberturaConta(dataAberturaConta);
+		this.setDocumentacao(documentacao);
+		this.setTiposConta(tiposConta);
 	}
-
 
 	//Get e set
+	
+	public Documentacao getDocumentacao() {
+		return documentacao;
+	}
+	
+	public void setDocumentacao(Documentacao documentacao) {
+		this.documentacao = documentacao;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -73,11 +98,11 @@ public class Titular {
 		this.dataAberturaConta = dataAberturaConta;
 	}
 
-	public List<ContaBancaria> getTiposConta() {
+	public Set<ContaBancaria> getTiposConta() {
 		return tiposConta;
 	}
 
-	public void setTiposConta(List<ContaBancaria> tiposConta) {
+	public void setTiposConta(Set<ContaBancaria> tiposConta) {
 		this.tiposConta = tiposConta;
 	}
 	
@@ -86,9 +111,9 @@ public class Titular {
 																				   //diretamente pela classe em outra classe?
 	}
 
-//	public void associa(Documentacao documentacao) {
-//		this.documentacao = documentacao;
-//	}
+	public void associa(Documentacao documentacao) {
+		this.documentacao = documentacao;
+	}
 	
 	public void adiciona(ContaBancaria contaBancaria) {
 		this.getTiposConta().add(contaBancaria);
@@ -134,13 +159,13 @@ public class Titular {
 			System.out.println(this);
 			System.out.println();
 			
-			//documentacao.exibir();
+			documentacao.exibir();
 			
-//			for(ContaBancaria cb: this.tiposConta) {
-//				this.contabiliza(cb);
-//				
-//				cb.exibir();
-//			}
+			for(ContaBancaria cb: this.tiposConta) {
+				this.contabiliza(cb);
+				
+				cb.exibir();
+			}
 			
 			this.showContabiliza();
 
@@ -150,14 +175,14 @@ public class Titular {
 		
 	}
 	
-
 	@Override
 	public String toString() {
 		return String.format("Nome: %s - Banco: %s - "
-				+ "Data da abertura da conta: %s \n",
-				this.nome,
-				this.nomeBanco,
-				this.dataAberturaConta
+				+ "Data da abertura da conta: %s - Documentação: %s",
+				this.getNome(),
+				this.getNomeBanco(),
+				this.getDataAberturaConta(),
+				this.getDocumentacao()
 				);
 	}
 }

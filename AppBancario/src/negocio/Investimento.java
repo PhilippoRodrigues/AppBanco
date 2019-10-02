@@ -5,7 +5,7 @@ import modelo.ContaBancaria;
 public class Investimento extends ContaBancaria {
 
 	private String tipo;
-	private float resgateInv, quantiaInicialInv, impostoResgateInv;
+	private float resgateInv, quantiaInicialInv, impostoResgateInv, quantiaFinalInv;
 
 	public Investimento(int id) {
 		super(id);
@@ -16,36 +16,30 @@ public class Investimento extends ContaBancaria {
 	}
 
 	public Investimento(String agencia, String numConta, float saldo, String tipo, float resgateInv,
-			float quantiaInicialInv, float impostoResgateInv, float taxaRendimentoInv, float rendimentosInv) {
-		super(agencia, numConta, saldo);
-		this.tipo = tipo;
-		this.resgateInv = resgateInv;
-		this.quantiaInicialInv = quantiaInicialInv;
-		this.getImpostoResgateInv();
-		this.getTaxaRendimentoInv();
-		this.getRendimentosInv();
-	}
-
-	public Investimento(int id, String agencia, String numConta, float saldo, String tipo, float resgateInv,
-			float quantiaInicialInv, float impostoResgateInv, float taxaRendimentoInv, float rendimentosInv) {
-		super(agencia, numConta, saldo);
-		this.tipo = tipo;
-		this.resgateInv = resgateInv;
-		this.quantiaInicialInv = quantiaInicialInv;
-		this.getImpostoResgateInv();
-		this.getTaxaRendimentoInv();
-		this.getRendimentosInv();
-	}
-	
-	public Investimento(String agencia, String numConta, float saldo, String tipo, float resgateInv,
 			float quantiaInicialInv) {
 		super(agencia, numConta, saldo);
 		this.tipo = tipo;
 		this.resgateInv = resgateInv;
 		this.quantiaInicialInv = quantiaInicialInv;
-		
+		this.getImpostoResgateInv();
+		this.getTaxaRendimentoInv();
+		this.getRendimentosInv();
+		this.getQuantiaFinalInv();
 	}
 
+	public Investimento(int id, String agencia, String numConta, float saldo, String tipo, float resgateInv,
+			float quantiaInicialInv, float impostoResgateInv, float taxaRendimentoInv, float rendimentosInv,
+			float quantiaFinalInv) {
+		super(id, agencia, numConta, saldo);
+		this.tipo = tipo;
+		this.resgateInv = resgateInv;
+		this.quantiaInicialInv = quantiaInicialInv;
+		this.getImpostoResgateInv();
+		this.getTaxaRendimentoInv();
+		this.getRendimentosInv();
+		this.getQuantiaFinalInv();
+	}
+	
 	// MÉTODOS
 
 	public String getTipo() {
@@ -145,34 +139,22 @@ public class Investimento extends ContaBancaria {
 		this.resgateInv = resgateInv;
 	}
 
-	@Override
-	public String extrato() {
-		String extrato = "Extrato bancário do mês atual";
-		extrato = "Total dos depósitos recebidos: R$ %.2f%n" + this.getDeposito();
-		extrato = "Total das transferências recebidas: R$ %.2f%n" + this.getReceberTransferencia();
-		extrato = "Tipo de Investimento: " + this.getTipo();
-		extrato = "Total do rendimento: R$ %.2f%n" + this.getRendimentosInv();
-		extrato = "Resgates realizados: R$ %.2f%n" + this.getResgateInv();
-		extrato = "Total do investimento: R$ %.2f%n" + this.getQuantiaFinalInv();
-
-		return extrato;
+	public void exibir() {
+		System.out.printf("Investimentos - ");
+		super.exibir();
+		System.out.println(this);
 	}
-
-	@Override
-	public float saldoFinal() {
-		return super.getSaldo() - this.getResgateInv() - this.getImpostoResgateInv() + this.getRendimentosInv();
-	}
-
-//	public void exibir() {
-//		System.out.printf("Investimentos - ");
-//		super.exibir();
-//		System.out.println(this);
-//	}
 
 	@Override
 	public String toString() {
 		return String.format(
-				"%s - Tipo: %s - Valor do resgate do investimento: %.2f - Valor inicial do investimento: %.2f - Imposto do resgate realizado: %.2f - Taxa de rendimento do investimento: %.2f - Rendimentos: %.2f",
+				"%s - "
+				+ "Tipo: %s - "
+				+ "Valor do resgate do investimento: %.2f - "
+				+ "Valor inicial do investimento: %.2f - "
+				+ "Imposto do resgate realizado: %.2f - "
+				+ "Taxa de rendimento do investimento: %.2f - "
+				+ "Rendimentos: %.2f",
 				super.toString(),
 				this.getTipo(),
 				this.getResgateInv(),

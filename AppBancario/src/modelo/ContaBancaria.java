@@ -6,14 +6,10 @@ import negocio.ContaPoupanca;
 public abstract class ContaBancaria {
 	
 	private int id;
-	private float deposito, pagamento, saldo, realizarTransferencia, receberTransferencia;
+	private float saldo;
 	private String numConta, agencia;
 	
 	protected static int contasBancarias;
-	
-	public ContaBancaria() {
-		
-	}
 	
 	public ContaBancaria(int id) {
 		this.setId(id);
@@ -37,6 +33,14 @@ public abstract class ContaBancaria {
 	}
 	
 	//Métodos
+	
+	public float getSaldo() {
+		return saldo;
+	}
+	
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
+	}
 	
 	public int getId() {
 		return id;
@@ -62,38 +66,6 @@ public abstract class ContaBancaria {
 		this.agencia = agencia;
 	}
 
-	public float getDeposito() {
-		return deposito;
-	}
-
-	public void setDeposito(float deposito) {
-		this.deposito = deposito;
-	}
-	
-	public float getRealizarTransferencia() {
-		return realizarTransferencia;
-	}
-	
-	public void setRealizarTransferencia(float realizarTransferencia) {
-		this.realizarTransferencia = realizarTransferencia;
-	}
-	
-	public float getReceberTransferencia() {
-		return receberTransferencia;
-	}
-	
-	public void setReceberTransferencia(float receberTransferencia) {
-		this.receberTransferencia = receberTransferencia;
-	}
-	
-	public float getSaldo() {
-		return saldo;
-	}
-	
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
-	}
-
 	public String obterTipo() {
 		if(this instanceof ContaCorrente) {
 			return "Conta-Corrente";
@@ -103,59 +75,52 @@ public abstract class ContaBancaria {
 			return "Investimento";
 		}
 	}
-//	public Documentacao getDocumentacao() {
-//		return documentacao;
-//	}
-//	
-//	public static void setContasBancarias(int contasBancarias) {
-//		ContaBancaria.contasBancarias = contasBancarias;
-//	}
 
-	public float getPagamento() {
-		return this.pagamento;
+	public static void setContasBancarias(int contasBancarias) {
+		ContaBancaria.contasBancarias = contasBancarias;
 	}
-	
-//	public String aviso() {
-//		while (this.pagamento > this.getSaldo()) {
-//			aviso = "Pagamento inválido. Saldo insuficiente.";
-//		}
-//		return aviso;
-//	}
-	
-	public void setPagamento(float pagamento) {
-		
-		this.pagamento = pagamento;
-		
-//		if(this.getPagamento() > this.getSaldo()) {
-//			System.out.println("Pagamento inválido. Saldo insuficiente."); 
-//		}else {
-//		}
-		
-	}
-	
-	public abstract float saldoFinal(); 
-	
-	public abstract String extrato();
 
 	public static int obterContasBancarias() {
 		return contasBancarias;
 	}
 	
+	//Impressão
 	
-//	//Impressão
-//	
-//	public void exibir() {
-//		System.out.println();
-//	}
+	public void exibir() {
+		System.out.println();
+	}
 	
 	@Override
 	public String toString() {
 		return String.format("Agencia: %s - " +
 				" Número da Conta: %s - " +
 				" Saldo: %.2f",
-				getAgencia(),
-				getNumConta(),
-				getSaldo());
+				this.getAgencia(),
+				this.getNumConta(),
+				this.getSaldo());
 	}
 
+	//HashCode e Equals
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContaBancaria other = (ContaBancaria) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 }

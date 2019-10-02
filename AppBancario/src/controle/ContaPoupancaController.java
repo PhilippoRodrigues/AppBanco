@@ -13,8 +13,6 @@ import negocio.ContaPoupanca;
 public class ContaPoupancaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	private ContaPoupanca cp;
-
 	public ContaPoupancaController() {
 		super();
 	}
@@ -22,43 +20,39 @@ public class ContaPoupancaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.setAttribute("contasPoupanca", ContaPoupancaDao.obterLista());
-
-		request.getRequestDispatcher("contaPoupancaLista.jsp").forward(request, response);
+		if(request.getParameter("tela") != null) {
+			request.getRequestDispatcher("contaPoupancaCadastro.jsp").forward(request, response);
+		} else {
+			request.setAttribute("lista", ContaPoupancaDao.obterLista());
+			request.getRequestDispatcher("contaPoupancaLista.jsp").forward(request, response);
+		}
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		ContaPoupanca cp = new ContaPoupanca(
-				request.getParameter("agencia"),
-				request.getParameter("numConta"),
-				Float.valueOf(request.getParameter("saldo")),
-				Float.valueOf(request.getParameter("rendimentos")),
-				Float.valueOf(request.getParameter("resgate")),
-				request.getParameter("depositoInicial")
-		);
-		
-		
-//		cp = (ContaPoupanca) request.getSession().getAttribute("novaCP");
-//
-//		cp.setRendimentos(Float.valueOf(request.getParameter("rendimentos")));
-//		cp.setResgate(Float.valueOf(request.getParameter("resgate")));
-//		cp.setDepositoInicial(request.getParameter("depositoInicial"));
+		if (request.getParameter("idContaBancaria") != null) {
 
-		ContaPoupancaDao.incluir(cp);
+			ContaPoupancaDao.excluir(Integer.valueOf(request.getParameter("idContaBancaria")));
+			this.doGet(request, response);
+		} else {
+			ContaPoupanca cp = new ContaPoupanca(
+					request.getParameter("agencia"), 
+					request.getParameter("numConta"),
+					Float.valueOf(request.getParameter("saldo")), 
+					Float.valueOf(request.getParameter("resgate")), 
+					request.getParameter("depositoInicial"));
 
-//		ContaBancariaController cbController = new ContaBancariaController();
-//		cbController.doGet(request, response);
-		
-		request.setAttribute("mensagem", cp.toString());
+			ContaPoupancaDao.incluir(cp);
 
-		request.setAttribute("titulo", "Conta-Poupança");
-		
-		request.setAttribute("controller", "ContaPoupancaController");
+			request.setAttribute("mensagem", cp.toString());
 
-		request.getRequestDispatcher("finaliza.jsp").forward(request, response);
+			request.setAttribute("titulo", "Conta-Poupança");
+
+			request.setAttribute("controller", "ContaPoupancaController");
+
+			request.getRequestDispatcher("finaliza.jsp").forward(request, response);
+		}
 	}
-
 }
