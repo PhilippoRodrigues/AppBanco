@@ -1,6 +1,6 @@
-<%@page import="negocio.Documentacao"%>
+<%@page import="br.com.philippo.wallet.negocio.Documentacao"%>
 <%@page import="java.util.List"%>
-<%@page import="negocio.Titular"%>
+<%@page import="br.com.philippo.wallet.negocio.Titular"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>

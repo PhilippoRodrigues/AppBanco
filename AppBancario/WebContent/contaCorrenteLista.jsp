@@ -1,4 +1,4 @@
-<%@page import="negocio.ContaCorrente"%>
+<%@page import="br.com.philippo.wallet.negocio.ContaCorrente"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

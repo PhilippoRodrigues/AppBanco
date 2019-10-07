@@ -13,6 +13,5 @@
 	<classpathentry kind="lib" path="/Users/philipporodrigues/Documents/Dev/JSTL Java/javax.servlet.jsp.jstl-1.2.4.jar"/>
 	<classpathentry kind="lib" path="/Users/philipporodrigues/Documents/Dev/JSTL Java/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="/Users/philipporodrigues/Documents/Dev/mysql-connector-java-8.0.17/mysql-connector-java-8.0.17.jar"/>
-	<classpathentry kind="lib" path="/Users/philipporodrigues/Documents/Dev/mysql-connector-java-5.1.48/mysql-connector-java-5.1.48.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -1,5 +1,5 @@
-<%@page import="negocio.Titular"%>
-<%@page import="modelo.ContaBancaria"%>
+<%@page import="br.com.philippo.wallet.negocio.Titular"%>
+<%@page import="br.com.philippo.wallet.modelo.ContaBancaria"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>

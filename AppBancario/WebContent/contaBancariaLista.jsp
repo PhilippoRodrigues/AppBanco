@@ -1,6 +1,6 @@
-<%@page import="dao.ContaBancariaDao"%>
-<%@page import="negocio.ContaCorrente"%>
-<%@page import="modelo.ContaBancaria"%>
+<%@page import="br.com.philippo.wallet.dao.ContaBancariaDao"%>
+<%@page import="br.com.philippo.wallet.negocio.ContaCorrente"%>
+<%@page import="br.com.philippo.wallet.modelo.ContaBancaria"%>
 <%@page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

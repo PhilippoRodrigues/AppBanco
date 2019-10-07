@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="negocio.Documentacao"%>
+<%@page import="br.com.philippo.wallet.negocio.Documentacao"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
