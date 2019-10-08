@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"br.com.philippo.wallet.auxiliar"},{"l":"br.com.philippo.wallet.conexao"},{"l":"br.com.philippo.wallet.controle"},{"l":"br.com.philippo.wallet.dao"},{"l":"br.com.philippo.wallet.modelo"},{"l":"br.com.philippo.wallet.negocio"}]
