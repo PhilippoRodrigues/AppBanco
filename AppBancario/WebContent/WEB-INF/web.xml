@@ -8,7 +8,7 @@
     <description></description>
     <display-name>DocumentacaoController</display-name>
     <servlet-name>DocumentacaoController</servlet-name>
-    <servlet-class>controle.DocumentacaoController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.DocumentacaoController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DocumentacaoController</servlet-name>
@@ -18,7 +18,7 @@
     <description></description>
     <display-name>ContaBancariaController</display-name>
     <servlet-name>ContaBancariaController</servlet-name>
-    <servlet-class>controle.ContaBancariaController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.ContaBancariaController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ContaBancariaController</servlet-name>
@@ -28,7 +28,7 @@
     <description></description>
     <display-name>ContaCorrenteController</display-name>
     <servlet-name>ContaCorrenteController</servlet-name>
-    <servlet-class>controle.ContaCorrenteController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.ContaCorrenteController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ContaCorrenteController</servlet-name>
@@ -38,7 +38,7 @@
     <description></description>
     <display-name>ContaPoupancaController</display-name>
     <servlet-name>ContaPoupancaController</servlet-name>
-    <servlet-class>controle.ContaPoupancaController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.ContaPoupancaController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ContaPoupancaController</servlet-name>
@@ -48,7 +48,7 @@
     <description></description>
     <display-name>InvestimentoController</display-name>
     <servlet-name>InvestimentoController</servlet-name>
-    <servlet-class>controle.InvestimentoController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.InvestimentoController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>InvestimentoController</servlet-name>
@@ -58,7 +58,7 @@
     <description></description>
     <display-name>TitularController</display-name>
     <servlet-name>TitularController</servlet-name>
-    <servlet-class>controle.TitularController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.TitularController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TitularController</servlet-name>
@@ -68,7 +68,7 @@
     <description></description>
     <display-name>AcessoController</display-name>
     <servlet-name>AcessoController</servlet-name>
-    <servlet-class>controle.AcessoController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.AcessoController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AcessoController</servlet-name>
@@ -78,7 +78,7 @@
     <description></description>
     <display-name>TitularDao</display-name>
     <servlet-name>TitularDao</servlet-name>
-    <servlet-class>dao.TitularDao</servlet-class>
+    <servlet-class>br.com.philippo.wallet.dao.TitularDao</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TitularDao</servlet-name>
@@ -88,7 +88,7 @@
     <description></description>
     <display-name>DocumentacaoTitularController</display-name>
     <servlet-name>DocumentacaoTitularController</servlet-name>
-    <servlet-class>controle.DocumentacaoTitularController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.DocumentacaoTitularController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DocumentacaoTitularController</servlet-name>
@@ -98,7 +98,7 @@
     <description></description>
     <display-name>ContaBancariaTitularController</display-name>
     <servlet-name>ContaBancariaTitularController</servlet-name>
-    <servlet-class>controle.ContaBancariaTitularController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.ContaBancariaTitularController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ContaBancariaTitularController</servlet-name>
@@ -108,7 +108,7 @@
     <description></description>
     <display-name>ExcluirTitularController</display-name>
     <servlet-name>ExcluirTitularController</servlet-name>
-    <servlet-class>controle.ExcluirTitularController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.ExcluirTitularController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ExcluirTitularController</servlet-name>
@@ -118,7 +118,7 @@
     <description></description>
     <display-name>ConsultaTitularController</display-name>
     <servlet-name>ConsultaTitularController</servlet-name>
-    <servlet-class>controle.ConsultaTitularController</servlet-class>
+    <servlet-class>br.com.philippo.wallet.controle.ConsultaTitularController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ConsultaTitularController</servlet-name>

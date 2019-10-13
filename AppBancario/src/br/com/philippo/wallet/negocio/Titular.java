@@ -1,5 +1,10 @@
 package br.com.philippo.wallet.negocio;
 
+	/**
+	 * @author philipporodrigues
+	 * @version 0.6
+	 */
+
 import java.util.HashSet;
 import java.util.Set;
 
