@@ -1,5 +1,7 @@
 package br.com.philippo.wallet.negocio;
 
+import java.util.Locale;
+
 import br.com.philippo.wallet.modelo.ContaBancaria;
 
 public class ContaCorrente extends ContaBancaria {
@@ -80,7 +82,9 @@ public class ContaCorrente extends ContaBancaria {
 
 	@Override
 	public String toString() {
-		return String.format("%s - Contra-Cheque: %.2f - Cheque Especial: %s - "
+		return String.format(
+				new Locale("pt", "BR"), 
+				"%s - Contra-Cheque: %.2f - Cheque Especial: %s - "
 				+ "Valor do Cheque Especial: %.2f - Financiamento: %s - Valor do financiamento: %.2f", 
 				super.toString(), 
 				this.getContraCheque(),

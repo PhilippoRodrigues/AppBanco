@@ -1,5 +1,7 @@
 package br.com.philippo.wallet.negocio;
 
+import java.util.Locale;
+
 import br.com.philippo.wallet.modelo.ContaBancaria;
 
 public class ContaPoupanca extends ContaBancaria {
@@ -94,6 +96,7 @@ public class ContaPoupanca extends ContaBancaria {
 	@Override
 	public String toString() {
 		return String.format(
+				new Locale("pt", "BR"), 
 				"%s - Rendimento: %.2f - Resgate: %.2f - Depósito inicial: %s - Total: %.2f", 
 				super.toString(),
 				this.getTaxaRendimentos(),

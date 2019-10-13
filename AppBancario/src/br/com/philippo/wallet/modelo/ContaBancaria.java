@@ -1,5 +1,7 @@
 package br.com.philippo.wallet.modelo;
 
+import java.util.Locale;
+
 import br.com.philippo.wallet.negocio.ContaCorrente;
 import br.com.philippo.wallet.negocio.ContaPoupanca;
 
@@ -92,7 +94,7 @@ public abstract class ContaBancaria {
 	
 	@Override
 	public String toString() {
-		return String.format("Agencia: %s - " +
+		return String.format(new Locale("pt", "BR"), "Agencia: %s - " +
 				" Número da Conta: %s - " +
 				" Saldo: %.2f",
 				this.getAgencia(),

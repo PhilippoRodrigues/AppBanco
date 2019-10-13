@@ -1,5 +1,7 @@
 package br.com.philippo.wallet.negocio;
 
+import java.util.Locale;
+
 import br.com.philippo.wallet.modelo.ContaBancaria;
 
 public class Investimento extends ContaBancaria {
@@ -148,6 +150,7 @@ public class Investimento extends ContaBancaria {
 	@Override
 	public String toString() {
 		return String.format(
+				new Locale("pt", "BR"), 
 				"%s - "
 				+ "Tipo: %s - "
 				+ "Valor do resgate do investimento: %.2f - "
