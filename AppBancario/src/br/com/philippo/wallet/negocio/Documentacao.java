@@ -6,7 +6,7 @@ public class Documentacao {
 	private String rg, cpf, endereco, cep, telefone;
 	
 	public Documentacao(int id) {
-		this.setId(id);
+		this.id = id;
 	}
 
 	public Documentacao(String rg, String cpf, String endereco, String cep, String telefone) {
@@ -33,10 +33,6 @@ public class Documentacao {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public String getCep() {
 		return cep;
 	}

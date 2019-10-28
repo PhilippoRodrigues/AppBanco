@@ -28,7 +28,7 @@ public class Titular {
 	
 	public Titular(int id) {
 		this();
-		this.setId(id);
+		this.id = id;
 	}
 	
 	public Titular(String nome, String nomeBanco, String dataAberturaConta) { 
@@ -45,7 +45,7 @@ public class Titular {
 	}
 	
 	public Titular(int id, String nome, String nomeBanco, String dataAberturaConta, Documentacao documentacao) { 
-		this.setId(id);
+		this.id = id;
 		this.setNome(nome);
 		this.setNomeBanco(nomeBanco);
 		this.setDataAberturaConta(dataAberturaConta);
@@ -53,7 +53,7 @@ public class Titular {
 	}
 
 	public Titular(int id, String nome, String nomeBanco, String dataAberturaConta, Documentacao documentacao, Set<ContaBancaria> tiposConta) { 
-		this.setId(id);
+		this.id = id;
 		this.setNome(nome);
 		this.setNomeBanco(nomeBanco);
 		this.setDataAberturaConta(dataAberturaConta);
@@ -81,10 +81,6 @@ public class Titular {
 	
 	public int getId() {
 		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
 	}
 	
 	public String getNomeBanco() {
