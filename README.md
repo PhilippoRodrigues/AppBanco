@@ -7,15 +7,15 @@ Aplicação para gravar dados das contas bancárias do usuário
 Funções gerais do código:
 <ol>
 <li>Login do usuário;</li>
-2- Cadastramento do titular;
-3- Cadastramento das documentações relativas ao titular;
-4- Cadastramento das contas bancárias (conta-corrente, conta-poupança, conta-investimento);
-5- Associação entre documentaçao e titular;
-6- Inclusão das contas bancárias cadastradas ao respectivo titular;
-7- Exibição do relatório dos dados do titular e das contas bancárias associadas a ele.
-8- Exclusão das contas-bancárias;
-9- Exclusão do titular;
-10- Armazenamento de todos os dados inseridos dentro do Banco de Dados.
+<li>Cadastramento do titular;</li>
+<li>Cadastramento das documentações relativas ao titular;</li>
+<li>Cadastramento das contas bancárias (conta-corrente, conta-poupança, conta-investimento);</li>
+<li>Associação entre documentaçao e titular;</li>
+<li>Inclusão das contas bancárias cadastradas ao respectivo titular;</li>
+<li>Exibição do relatório dos dados do titular e das contas bancárias associadas a ele.</li>
+<li>Exclusão das contas-bancárias;</li>
+<li>Exclusão do titular;</li>
+<li>Armazenamento de todos os dados inseridos dentro do Banco de Dados.</li>
   </ol>
 
 Funções da classe ContaCorrente:
