@@ -4,7 +4,7 @@
 
 Aplicação para gravar dados das contas bancárias do usuário
 
-Funções gerais do código:
+<style color: orange>Funções gerais do código:</style>
 
 1- Login do usuário;
 2- Cadastramento do titular;
