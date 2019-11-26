@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 <title>AppBanco</title>
 <meta charset="utf-8">
@@ -12,17 +12,29 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/estilos-login.css" />
 </head>
 <body>
-	<%
-		boolean invalido = false;
-		if (request.getAttribute("invalido") != null) {
-			invalido = (Boolean) request.getAttribute("invalido");
-		}
-	%>
+	<header>
+		<div class="container cabecalho">
+			<h2>My Wallet</h2>
+			<img alt="imagem carteira" src="imagens/wallet.jpg">
+		</div>
 
-	<div class="container">
-		<h2>Usuário</h2>
+	</header>
+
+	<main>
+
+		<%
+			boolean invalido = false;
+			if (request.getAttribute("invalido") != null) {
+				invalido = (Boolean) request.getAttribute("invalido");
+			}
+		%>
+
+		<div class="container titulo">
+			Olá, <b>Fulano</b>!
+		</div>
 
 		<%
 			if (invalido) {
@@ -36,22 +48,25 @@
 			}
 		%>
 
-		<form action="AcessoController" method="post">
-			<div class="form-group">
-				<label for="email">E-mail:</label> <input type="email"
-					class="form-control" id="email" placeholder="Entre com o e-mail"
-					name="email">
-			</div>
+		<section class="formulario">
 
-			<div class="form-group">
-				<label for="senha">Senha:</label> <input type="password"
-					class="form-control" id="senha" placeholder="Entre com a senha"
-					name="senha">
-			</div>
+			<form action="AcessoController" method="post">
+				<div class="form-group">
+					<label for="email">E-mail:</label> <input type="email"
+						class="form-control" id="email" placeholder="Entre com o e-mail"
+						name="email">
+				</div>
 
-			<button type="submit" class="btn btn-default">Acessar</button>
-		</form>
-	</div>
+				<div class="form-group">
+					<label for="senha">Senha:</label> <input type="password"
+						class="form-control" id="senha" placeholder="Entre com a senha"
+						name="senha">
+				</div>
+
+				<button type="submit" class="btn btn-default">Acessar</button>
+			</form>
+		</section>
+	</main>
 
 </body>
 </html>
