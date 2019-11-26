@@ -33,7 +33,7 @@
 		%>
 
 		<div class="container titulo">
-			Olá, <b>Fulano</b>!
+			Olá, <b>Fulano</b>! Bem-vindo ao <b>MyWallet</b>!
 		</div>
 
 		<%
@@ -67,6 +67,10 @@
 			</form>
 		</section>
 	</main>
+
+	<footer>
+		<p class="copyright">&copy; Copyright MyWallet - 2019</p>
+	</footer>
 
 </body>
 </html>
