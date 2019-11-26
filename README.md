@@ -4,7 +4,7 @@
 
 Aplicação para gravar dados das contas bancárias do usuário
 
-Funções gerais do código:
+<h4><b>Funções gerais do código:</b></h4>
 <ol>
 <li>Login do usuário;</li>
 <li>Cadastramento do titular;</li>
@@ -18,7 +18,7 @@ Funções gerais do código:
 <li>Armazenamento de todos os dados inseridos dentro do Banco de Dados.</li>
   </ol>
 
-Funções da classe ContaCorrente:
+<h4><b>Funções da classe ContaCorrente:</b></h4>
 
 <ol>
 <li>Cadastramento da agência e número da conta;</li>
@@ -27,9 +27,9 @@ Funções da classe ContaCorrente:
 <li>Saber se tem direito a financiamento e cheque especial, de acordo com o valor do contra-cheque;</li>
 <li>Obter o valor do cheque especial e/ou do financiamento, de acordo com uma porcentagem que está inclusa no método de cálculo;</li>
 <li>Exibir as informações de cadastro de uma nova conta-corrente, em uma nova tela.</li>
- <ol>
+ </ol>
 
-Funções da classe ContaPoupanca:
+<h4><b>Funções da classe ContaPoupanca:</b></h4>
 
 <ol>
 <li>Cadastramento da agência e número da conta;</li>
@@ -38,9 +38,9 @@ Funções da classe ContaPoupanca:
 <li>Simular resgate de algum valor;</li>
 <li>Exibição do total, de acordo com o cálculo do do saldo, do resgate, e dos rendimentos, que estão inclusos no método o imposto de resgate e a taxa de rendimentos;</li>
 <li>Exibir as informações de cadastro de uma nova conta-poupança, em uma nova tela.</li>
-<ol>
+</ol>
 
-Funções da classe Investimento:
+<h4><b>Funções da classe Investimento:</b></h4>
 
 <ol>
 <li>Cadastramento da agência e número da conta;</li>
@@ -50,9 +50,9 @@ Funções da classe Investimento:
 <li>Simular resgate de algum valor;</li>
 <li>Exibir o total, de acordo com o cálculo do do saldo, do resgate e dos rendimentos, com cada tipo possuindo uma taxa diferente de resgate e de rendimento;</li>
 <li>Exibir as informações de cadastro de uma nova conta-investimento, em uma nova tela.</li>
-<ol>
+</ol>
 
-Funções da classe Documentacao:
+<h4><b>Funções da classe Documentacao:</b></h4>
 
 <ol>
 <li>Cadastro do Rg;</li>
@@ -61,9 +61,9 @@ Funções da classe Documentacao:
 <li>Cadastro do CEP;</li>
 <li>Cadastro do telefone;</li>
 <li>Exibir as informações de cadastro de uma nova documentação, em uma nova tela.</li>
-<ol>
+</ol>
   
-Funções da classe Titular:
+<h4><b>Funções da classe Titular:</b></h4>
 
 <ol>
 <li>Cadastro do nome do titular;</li>
@@ -72,4 +72,4 @@ Funções da classe Titular:
 <li>Inclusão de alguma documentação ao titular;</li>
 <li>Inclusão de uma ou mais contas bancárias ao titular;</li>
 <li>Relatório dos dados do titular e das contas associadas.</li>
-<ol>
+</ol>
