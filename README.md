@@ -1,6 +1,6 @@
 # AppBanco
 
-<< <b>Estou implementando recursos de Front-end aos poucos</b> :3 >>
+<< <b>Estou implementando recursos de Front-end aos poucos</b> >>
 
 Aplicação para gravar dados das contas bancárias do usuário
 
